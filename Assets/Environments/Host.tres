@@ -12,3 +12,4 @@ texture_size = 1
 [resource]
 background_mode = 3
 background_sky = SubResource( 1 )
+background_energy = 0.0
