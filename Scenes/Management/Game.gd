@@ -17,4 +17,4 @@ func fade_out() -> void:
 	tween.start()
 
 func set_label():
-	$Label.text = str(NetHelper.player2id)
+	$Label.text = str(get_tree().get_network_unique_id()) + "\n" + str(NetHelper.player2id)
