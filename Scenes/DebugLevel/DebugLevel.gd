@@ -1,6 +1,7 @@
 extends Spatial
 
 func _ready() -> void:
+	return
 	var player1 : Spatial = preload("res://Scenes/FPSCharacter/FPSCharacter.tscn").instance()
 
 	player1.set_name(str(get_tree().get_network_unique_id()))

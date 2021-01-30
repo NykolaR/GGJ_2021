@@ -29,6 +29,11 @@ config/icon="res://icon.png"
 Time="*res://Autoload/Time.gd"
 NetHelper="*res://Autoload/NetHelper.gd"
 
+[display]
+
+window/stretch/mode="2d"
+window/stretch/aspect="expand"
+
 [input]
 
 up={
