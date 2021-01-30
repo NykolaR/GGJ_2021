@@ -30,10 +30,15 @@ func _ready() -> void:
 		# stops processing physics func & input processing; only the person playing this ghost can control them
 		set_physics_process(false)
 		set_process_input(false)
+		var mat : SpatialMaterial = particles.material_override
+		if mat:
+			mat.albedo_texture = $Viewport.get_texture()
 	else:
 		# current scene tree is controlling this ghost
 		fling.visible = true
-		#particles.visible = false
+		$Viewport/AnimatedSprite.playing = false
+		$Viewport.render_target_update_mode = Viewport.UPDATE_DISABLED
+		particles.visible = false
 
 func _physics_process(delta: float) -> void:
 	if not tween.is_active():
@@ -81,8 +86,8 @@ func _input(event: InputEvent) -> void:
 
 # camera movement of the fps object
 func camera_control(vector : Vector2) -> void:
-	cam_y.rotate_y(-vector.x * 0.15 * 0.016 * Settings.mouse_sens)#get_physics_process_delta_time())
-	cam_x.rotation.x = clamp(cam_x.rotation.x + (-vector.y * 0.15 * 0.016 * Settings.mouse_sens), -1.3, 1.3)
+	cam_y.rotate_y(-vector.x * 0.01 * Settings.mouse_sens)#get_physics_process_delta_time())
+	cam_x.rotation.x = clamp(cam_x.rotation.x + (-vector.y * 0.01 * Settings.mouse_sens), -1.3, 1.3)
 
 func _tween_all_completed() -> void:
 	if possessed:

@@ -1,3 +1,4 @@
 extends Node
 
-var mouse_sens : float = 1.0
+# 0.1 to 1.0 ish ?
+var mouse_sens : float = 0.5

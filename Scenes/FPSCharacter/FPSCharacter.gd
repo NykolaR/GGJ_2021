@@ -54,8 +54,8 @@ func movement(delta : float) -> void:
 
 # camera movement of the fps object
 func camera_control(vector : Vector2) -> void:
-	cam_y.rotate_y(-vector.x * 0.15 * 0.016 * Settings.mouse_sens)# * get_physics_process_delta_time())
-	cam_x.rotation.x = clamp(cam_x.rotation.x + (-vector.y * 0.15 * 0.016 * Settings.mouse_sens), -1.3, 1.3)
+	cam_y.rotate_y(-vector.x * 0.01 * Settings.mouse_sens)# * get_physics_process_delta_time())
+	cam_x.rotation.x = clamp(cam_x.rotation.x + (-vector.y * 0.01 * Settings.mouse_sens), -1.3, 1.3)
 
 remote func set_transform(new : Transform) -> void:
 	mesh.global_transform = new
