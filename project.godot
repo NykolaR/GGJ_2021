@@ -72,6 +72,7 @@ possess={
 3d_physics/layer_1="environment"
 3d_physics/layer_2="possessable"
 3d_physics/layer_3="possessable_click"
+3d_physics/layer_4="ghost"
 
 [rendering]
 

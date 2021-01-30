@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Scenes/Ghost/Ghost.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Visual/circle_bg.png" type="Texture" id=2]
@@ -6,7 +6,9 @@
 [ext_resource path="res://Assets/Visual/ghost_reticle.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Visual/Smoke15Frames.png" type="Texture" id=5]
 
-[sub_resource type="SpatialMaterial" id=1]
+[sub_resource type="SphereShape" id=1]
+
+[sub_resource type="SpatialMaterial" id=2]
 resource_local_to_scene = true
 flags_transparent = true
 vertex_color_use_as_albedo = true
@@ -15,98 +17,98 @@ particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[sub_resource type="QuadMesh" id=2]
+[sub_resource type="QuadMesh" id=3]
 
-[sub_resource type="Curve" id=3]
+[sub_resource type="Curve" id=4]
 _data = [ Vector2( 0, 0.313596 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.892544 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="Gradient" id=4]
+[sub_resource type="Gradient" id=5]
 offsets = PoolRealArray( 0, 0.0684524, 0.613095, 1 )
 colors = PoolColorArray( 1, 1, 1, 0.0670927, 1, 1, 1, 1, 1, 1, 1, 0.757188, 1, 1, 1, 0 )
 
-[sub_resource type="ParticlesMaterial" id=5]
+[sub_resource type="ParticlesMaterial" id=6]
 gravity = Vector3( 0, 9.8, 0 )
 
-[sub_resource type="CubeMesh" id=6]
-
-[sub_resource type="AtlasTexture" id=7]
-flags = 7
-atlas = ExtResource( 5 )
-region = Rect2( 512, 256, 128, 128 )
+[sub_resource type="CubeMesh" id=7]
 
 [sub_resource type="AtlasTexture" id=8]
 flags = 7
 atlas = ExtResource( 5 )
-region = Rect2( 384, 256, 128, 128 )
+region = Rect2( 512, 256, 128, 128 )
 
 [sub_resource type="AtlasTexture" id=9]
 flags = 7
 atlas = ExtResource( 5 )
-region = Rect2( 256, 256, 128, 128 )
+region = Rect2( 384, 256, 128, 128 )
 
 [sub_resource type="AtlasTexture" id=10]
 flags = 7
 atlas = ExtResource( 5 )
-region = Rect2( 128, 256, 128, 128 )
+region = Rect2( 256, 256, 128, 128 )
 
 [sub_resource type="AtlasTexture" id=11]
 flags = 7
 atlas = ExtResource( 5 )
-region = Rect2( 0, 256, 128, 128 )
+region = Rect2( 128, 256, 128, 128 )
 
 [sub_resource type="AtlasTexture" id=12]
 flags = 7
 atlas = ExtResource( 5 )
-region = Rect2( 512, 128, 128, 128 )
+region = Rect2( 0, 256, 128, 128 )
 
 [sub_resource type="AtlasTexture" id=13]
 flags = 7
 atlas = ExtResource( 5 )
-region = Rect2( 384, 128, 128, 128 )
+region = Rect2( 512, 128, 128, 128 )
 
 [sub_resource type="AtlasTexture" id=14]
 flags = 7
 atlas = ExtResource( 5 )
-region = Rect2( 256, 128, 128, 128 )
+region = Rect2( 384, 128, 128, 128 )
 
 [sub_resource type="AtlasTexture" id=15]
 flags = 7
 atlas = ExtResource( 5 )
-region = Rect2( 128, 128, 128, 128 )
+region = Rect2( 256, 128, 128, 128 )
 
 [sub_resource type="AtlasTexture" id=16]
 flags = 7
 atlas = ExtResource( 5 )
-region = Rect2( 0, 128, 128, 128 )
+region = Rect2( 128, 128, 128, 128 )
 
 [sub_resource type="AtlasTexture" id=17]
 flags = 7
 atlas = ExtResource( 5 )
-region = Rect2( 512, 0, 128, 128 )
+region = Rect2( 0, 128, 128, 128 )
 
 [sub_resource type="AtlasTexture" id=18]
 flags = 7
 atlas = ExtResource( 5 )
-region = Rect2( 384, 0, 128, 128 )
+region = Rect2( 512, 0, 128, 128 )
 
 [sub_resource type="AtlasTexture" id=19]
 flags = 7
 atlas = ExtResource( 5 )
-region = Rect2( 256, 0, 128, 128 )
+region = Rect2( 384, 0, 128, 128 )
 
 [sub_resource type="AtlasTexture" id=20]
 flags = 7
 atlas = ExtResource( 5 )
-region = Rect2( 128, 0, 128, 128 )
+region = Rect2( 256, 0, 128, 128 )
 
 [sub_resource type="AtlasTexture" id=21]
 flags = 7
 atlas = ExtResource( 5 )
+region = Rect2( 128, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=22]
+flags = 7
+atlas = ExtResource( 5 )
 region = Rect2( 0, 0, 128, 128 )
 
-[sub_resource type="SpriteFrames" id=22]
+[sub_resource type="SpriteFrames" id=23]
 animations = [ {
-"frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ) ],
+"frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ) ],
 "loop": true,
 "name": "default",
 "speed": 30.0
@@ -129,29 +131,36 @@ collision_mask = 4
 collide_with_areas = true
 collide_with_bodies = false
 
+[node name="Area" type="Area" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+shape = SubResource( 1 )
+
 [node name="Tween" type="Tween" parent="."]
 
 [node name="Particles" type="CPUParticles" parent="."]
-material_override = SubResource( 1 )
+material_override = SubResource( 2 )
 cast_shadow = 0
 generate_lightmap = false
 emitting = false
 local_coords = false
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 emission_shape = 1
 emission_sphere_radius = 0.1
 gravity = Vector3( 0, 0.3, 0 )
-scale_amount_curve = SubResource( 3 )
-color_ramp = SubResource( 4 )
+scale_amount_curve = SubResource( 4 )
+color_ramp = SubResource( 5 )
 
 [node name="Particles2" type="Particles" parent="."]
 visible = false
-material_override = SubResource( 1 )
+material_override = SubResource( 2 )
 cast_shadow = 0
 generate_lightmap = false
 local_coords = false
-process_material = SubResource( 5 )
-draw_pass_1 = SubResource( 6 )
+process_material = SubResource( 6 )
+draw_pass_1 = SubResource( 7 )
 
 [node name="Fling" type="TextureProgress" parent="."]
 visible = false
@@ -198,8 +207,8 @@ usage = 1
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Viewport"]
 modulate = Color( 5, 5, 5, 1 )
-frames = SubResource( 22 )
-frame = 11
+frames = SubResource( 23 )
+frame = 3
 playing = true
 centered = false
 

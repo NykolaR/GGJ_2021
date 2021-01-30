@@ -4,6 +4,7 @@ var height : float = 1.8
 var walk_speed : float = 3.0
 
 onready var raycast : RayCast = $RayCast
+onready var ghostcast : RayCast = $Cam_y/Cam_x/Camera/GhostCast
 
 onready var cam_y : Spatial = $Cam_y
 onready var cam_x : Spatial = $Cam_y/Cam_x
@@ -32,13 +33,16 @@ func _input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	movement(delta)
-
+	
 	if raycast.is_colliding():
 		var ray_col : Vector3 = raycast.get_collision_point()
 		global_transform.origin.y = ray_col.y + height
-
+	
 	if get_tree().network_peer:
 		rpc_unreliable("set_transform", mesh.global_transform)
+	
+	if ghostcast.is_colliding():
+		print("GHOST!")
 
 # movement of the fps object
 func movement(delta : float) -> void:
