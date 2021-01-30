@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/Ghost/Ghost.gd" type="Script" id=1]
+
+[sub_resource type="SpatialMaterial" id=1]
+
+[sub_resource type="ParticlesMaterial" id=2]
+gravity = Vector3( 0, 9.8, 0 )
+
+[sub_resource type="CubeMesh" id=3]
 
 [node name="Ghost" type="Spatial"]
 script = ExtResource( 1 )
@@ -22,4 +29,12 @@ collide_with_bodies = false
 [node name="Tween" type="Tween" parent="."]
 
 [node name="Particles" type="Particles" parent="."]
+material_override = SubResource( 1 )
+cast_shadow = 0
+generate_lightmap = false
+emitting = false
 local_coords = false
+process_material = SubResource( 2 )
+draw_pass_1 = SubResource( 3 )
+
+[connection signal="tween_all_completed" from="Tween" to="." method="_tween_all_completed"]

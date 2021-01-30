@@ -23,6 +23,10 @@ _global_script_class_icons={
 config/name="GGJ_2021"
 config/icon="res://icon.png"
 
+[autoload]
+
+Time="*res://Autoload/Time.gd"
+
 [input]
 
 up={
