@@ -1,6 +1,8 @@
 extends StaticBody
 class_name Possessable
 
+onready var center : Position3D = $Center
+
 var n : Vector3 = Vector3()
 var magnitude : float = 0.0
 

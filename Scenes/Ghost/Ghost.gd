@@ -64,7 +64,7 @@ func _physics_process(delta: float) -> void:
 			reticle.modulate.a = 0.5
 			reticle.rect_scale = MISS_SCALE
 
-func switch_target(target : Spatial) -> void:
+func switch_target(target : Possessable) -> void:
 	tween.stop_all()
 	reticle.modulate.a = 0.1
 	reticle.rect_scale = FLING_SCALE
@@ -73,7 +73,7 @@ func switch_target(target : Spatial) -> void:
 	possessed = target
 	particles.emitting = true
 	#tween.interpolate_property(self, "translation", translation, target.translation, transfer_time - (fling.value*2), Tween.TRANS_QUART, Tween.EASE_IN_OUT)
-	tween.interpolate_property(self, "translation", translation, target.translation, transfer_time - (pow(fling.value, 2)*(transfer_time-min_transfer_time)), Tween.TRANS_ELASTIC, Tween.EASE_OUT)
+	tween.interpolate_property(self, "translation", translation, (target.translation + target.center.translation), transfer_time - (pow(fling.value, 2)*(transfer_time-min_transfer_time)), Tween.TRANS_BACK, Tween.EASE_OUT)
 	tween.start()
 	fling.value = 0.0
 

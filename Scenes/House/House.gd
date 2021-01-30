@@ -10,9 +10,9 @@ const testPossessable = preload("res://Scenes/Possessable/Possessables/TestPosse
 func _ready():
 	for child in $Spawns.get_children():
 		var newPossessable = testPossessable.instance()
-		newPossessable.global_transform = child.global_transform
 		#newPossessable.rotate_y(rand.range(0,pi))
 		add_child(newPossessable)
+		newPossessable.global_transform = child.global_transform
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
