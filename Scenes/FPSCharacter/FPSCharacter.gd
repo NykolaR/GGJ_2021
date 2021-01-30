@@ -3,6 +3,8 @@ extends KinematicBody
 var height : float = 1.8
 var walk_speed : float = 3.0
 
+const ghost_env : Environment = preload("res://Assets/Environments/Ghost.tres")
+
 onready var environment : WorldEnvironment = $WorldEnvironment
 
 onready var raycast : RayCast = $RayCast
@@ -19,6 +21,7 @@ func _ready() -> void:
 		# current scene tree is not in control
 		set_process_input(false)
 		set_physics_process(false)
+		$WorldEnvironment.environment = ghost_env
 	else:
 		# current scene tree is in control
 		mesh.visible = false
@@ -44,7 +47,9 @@ func _physics_process(delta: float) -> void:
 		rpc_unreliable("set_transform", mesh.global_transform)
 	
 	if ghostcast.is_colliding():
-		print("GHOST!")
+		var ghost : Ghost = ghostcast.get_collider().get_parent() # ew
+		if ghost:
+			ghost.caught += delta * 2
 
 # movement of the fps object
 func movement(delta : float) -> void:

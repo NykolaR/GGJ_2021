@@ -9,12 +9,18 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Spatial",
+"class": "Ghost",
+"language": "GDScript",
+"path": "res://Scenes/Ghost/Ghost.gd"
+}, {
 "base": "StaticBody",
 "class": "Possessable",
 "language": "GDScript",
 "path": "res://Scenes/Possessable/Possessable.gd"
 } ]
 _global_script_class_icons={
+"Ghost": "",
 "Possessable": ""
 }
 

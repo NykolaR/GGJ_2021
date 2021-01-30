@@ -1,4 +1,5 @@
 extends Spatial
+class_name Ghost
 
 var caught : float = 0.0 setget set_caught
 
@@ -106,4 +107,4 @@ func _tween_completed(object : Object, key : NodePath) -> void:
 func set_caught(new : float) -> void:
 	caught = new
 	if caught >= 3.0:
-		print("ded")
+		pass
