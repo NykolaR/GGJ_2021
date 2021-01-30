@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/DebugLevel/DebugLevel.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Possessable/Possessables/TestPossessable.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/Ghost/Ghost.tscn" type="PackedScene" id=4]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 10, 1, 10 )
@@ -54,6 +53,3 @@ input_ray_pickable = true
 [node name="TestPossessable2" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.69627, 2.0328, 0 )
 input_ray_pickable = true
-
-[node name="Ghost" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.52185, 0 )

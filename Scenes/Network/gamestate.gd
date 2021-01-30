@@ -62,7 +62,6 @@ func _connected_fail():
 
 remote func register_player(new_player_name):
 	var id = get_tree().get_rpc_sender_id()
-	print(id)
 	players[id] = new_player_name
 	emit_signal("player_list_changed")
 
@@ -84,21 +83,27 @@ remote func pre_start_game(spawn_points):
 
 	for p_id in spawn_points:
 		
+		var player
 		print (p_id)
+		if p_id == 1:
+			print("host")
+			player = player_scene.instance()
+		else:
+			print("ghost")
+			player = ghost_scene.instance()
 		
 		#var spawn_pos = world.get_node("SpawnPoints/" + str(spawn_points[p_id])).position
-		var player = player_scene.instance()
 
 		player.set_name(str(p_id)) # Use unique ID as node name.
 		#player.position=spawn_pos
 		player.set_network_master(p_id) #set unique id as master.
 
-		if p_id == get_tree().get_network_unique_id():
+		#if p_id == get_tree().get_network_unique_id():
 			# If node for this peer id, set name.
-			player.set_player_name(player_name)
-		else:
+		#	player.set_player_name(player_name)
+		#else:
 			# Otherwise set name from peer.
-			player.set_player_name(players[p_id])
+		#	player.set_player_name(players[p_id])
 
 		world.add_child(player)
 
