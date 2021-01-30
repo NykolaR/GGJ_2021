@@ -35,7 +35,9 @@ resource_name = "little_wiggle"
 [sub_resource type="SphereShape" id=3]
 radius = 3.0
 
-[node name="Possessable" type="StaticBody"]
+[node name="Possessable" type="StaticBody" groups=[
+"Possessive",
+]]
 input_ray_pickable = false
 collision_layer = 2
 collision_mask = 0
