@@ -1,5 +1,8 @@
 extends KinematicBody
 
+var height : float = 1.8
+var walk_speed : float = 3.0
+
 onready var raycast : RayCast = $RayCast
 
 onready var cam_y : Spatial = $Cam_y
@@ -9,18 +12,33 @@ onready var mesh : MeshInstance = $MeshInstance
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	if not is_network_master():
+	if NetHelper.online and not is_network_master():
+		# current scene tree is not in control
 		set_process_input(false)
 		set_physics_process(false)
+	else:
+		# current scene tree is in control
+		pass
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion:
+	if event.is_action_pressed("ui_cancel"):
+		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		else:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	
+	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		camera_control(event.relative)
 
 func _physics_process(delta: float) -> void:
 	movement(delta)
 
-	rpc_unreliable("set_transform", mesh.global_transform)
+	if raycast.is_colliding():
+		var ray_col : Vector3 = raycast.get_collision_point()
+		global_transform.origin.y = ray_col.y + height
+
+	if get_tree().network_peer:
+		rpc_unreliable("set_transform", mesh.global_transform)
 
 # movement of the fps object
 func movement(delta : float) -> void:
@@ -32,12 +50,12 @@ func movement(delta : float) -> void:
 	movement.z += Input.get_action_strength("down")
 	movement.z -= Input.get_action_strength("up")
 
-	move_and_slide(movement.rotated(Vector3.UP, cam_y.rotation.y))
+	move_and_slide(movement.rotated(Vector3.UP, cam_y.rotation.y) * walk_speed)
 
 # camera movement of the fps object
 func camera_control(vector : Vector2) -> void:
-	cam_y.rotate_y(-vector.x * 0.15 * get_physics_process_delta_time())
-	cam_x.rotation.x = clamp(cam_x.rotation.x + (-vector.y * 0.15 * get_physics_process_delta_time()), -1.3, 1.3)
+	cam_y.rotate_y(-vector.x * 0.15 * 0.016 * Settings.mouse_sens)# * get_physics_process_delta_time())
+	cam_x.rotation.x = clamp(cam_x.rotation.x + (-vector.y * 0.15 * 0.016 * Settings.mouse_sens), -1.3, 1.3)
 
 remote func set_transform(new : Transform) -> void:
 	mesh.global_transform = new

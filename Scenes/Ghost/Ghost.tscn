@@ -1,15 +1,16 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Ghost/Ghost.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Visual/circle_bg.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Visual/circle_fg.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Visual/ghost_reticle.png" type="Texture" id=4]
 
 [sub_resource type="SpatialMaterial" id=1]
 
-[sub_resource type="ParticlesMaterial" id=2]
-gravity = Vector3( 0, 9.8, 0 )
+[sub_resource type="CubeMesh" id=2]
 
-[sub_resource type="CubeMesh" id=3]
+[sub_resource type="ParticlesMaterial" id=3]
+gravity = Vector3( 0, 9.8, 0 )
 
 [node name="Ghost" type="Spatial"]
 script = ExtResource( 1 )
@@ -30,13 +31,23 @@ collide_with_bodies = false
 
 [node name="Tween" type="Tween" parent="."]
 
-[node name="Particles" type="Particles" parent="."]
+[node name="Particles" type="CPUParticles" parent="."]
+material_override = SubResource( 1 )
+cast_shadow = 0
+generate_lightmap = false
+emitting = false
+local_coords = false
+mesh = SubResource( 2 )
+gravity = Vector3( 0, 9.8, 0 )
+
+[node name="Particles2" type="Particles" parent="."]
+visible = false
 material_override = SubResource( 1 )
 cast_shadow = 0
 generate_lightmap = false
 local_coords = false
-process_material = SubResource( 2 )
-draw_pass_1 = SubResource( 3 )
+process_material = SubResource( 3 )
+draw_pass_1 = SubResource( 2 )
 
 [node name="Fling" type="TextureProgress" parent="."]
 visible = false
@@ -51,6 +62,26 @@ texture_under = ExtResource( 2 )
 texture_progress = ExtResource( 3 )
 fill_mode = 4
 tint_under = Color( 0.239216, 0.239216, 0.239216, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Reticle" type="TextureRect" parent="CenterContainer"]
+modulate = Color( 1, 1, 1, 0.501961 )
+margin_left = 480.0
+margin_top = 268.0
+margin_right = 544.0
+margin_bottom = 332.0
+rect_pivot_offset = Vector2( 32, 32 )
+texture = ExtResource( 4 )
+stretch_mode = 4
 __meta__ = {
 "_edit_use_anchors_": false
 }

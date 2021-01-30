@@ -28,6 +28,7 @@ config/icon="res://icon.png"
 
 Time="*res://Autoload/Time.gd"
 NetHelper="*res://Autoload/NetHelper.gd"
+Settings="*res://Autoload/Settings.gd"
 
 [display]
 
