@@ -199,7 +199,7 @@ usage = 1
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Viewport"]
 modulate = Color( 5, 5, 5, 1 )
 frames = SubResource( 22 )
-frame = 11
+frame = 12
 playing = true
 centered = false
 
