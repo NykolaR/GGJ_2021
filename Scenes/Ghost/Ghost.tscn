@@ -1,10 +1,10 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/Ghost/Ghost.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Visual/circle_bg.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Visual/circle_fg.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Visual/ghost_reticle.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Visual/Smoke15Frames.png" type="Texture" id=5]
+[ext_resource path="res://Scenes/Ghost/smoke.tres" type="SpriteFrames" id=5]
 
 [sub_resource type="SphereShape" id=1]
 
@@ -31,89 +31,6 @@ gravity = Vector3( 0, 9.8, 0 )
 
 [sub_resource type="CubeMesh" id=7]
 
-[sub_resource type="AtlasTexture" id=8]
-flags = 7
-atlas = ExtResource( 5 )
-region = Rect2( 512, 256, 128, 128 )
-
-[sub_resource type="AtlasTexture" id=9]
-flags = 7
-atlas = ExtResource( 5 )
-region = Rect2( 384, 256, 128, 128 )
-
-[sub_resource type="AtlasTexture" id=10]
-flags = 7
-atlas = ExtResource( 5 )
-region = Rect2( 256, 256, 128, 128 )
-
-[sub_resource type="AtlasTexture" id=11]
-flags = 7
-atlas = ExtResource( 5 )
-region = Rect2( 128, 256, 128, 128 )
-
-[sub_resource type="AtlasTexture" id=12]
-flags = 7
-atlas = ExtResource( 5 )
-region = Rect2( 0, 256, 128, 128 )
-
-[sub_resource type="AtlasTexture" id=13]
-flags = 7
-atlas = ExtResource( 5 )
-region = Rect2( 512, 128, 128, 128 )
-
-[sub_resource type="AtlasTexture" id=14]
-flags = 7
-atlas = ExtResource( 5 )
-region = Rect2( 384, 128, 128, 128 )
-
-[sub_resource type="AtlasTexture" id=15]
-flags = 7
-atlas = ExtResource( 5 )
-region = Rect2( 256, 128, 128, 128 )
-
-[sub_resource type="AtlasTexture" id=16]
-flags = 7
-atlas = ExtResource( 5 )
-region = Rect2( 128, 128, 128, 128 )
-
-[sub_resource type="AtlasTexture" id=17]
-flags = 7
-atlas = ExtResource( 5 )
-region = Rect2( 0, 128, 128, 128 )
-
-[sub_resource type="AtlasTexture" id=18]
-flags = 7
-atlas = ExtResource( 5 )
-region = Rect2( 512, 0, 128, 128 )
-
-[sub_resource type="AtlasTexture" id=19]
-flags = 7
-atlas = ExtResource( 5 )
-region = Rect2( 384, 0, 128, 128 )
-
-[sub_resource type="AtlasTexture" id=20]
-flags = 7
-atlas = ExtResource( 5 )
-region = Rect2( 256, 0, 128, 128 )
-
-[sub_resource type="AtlasTexture" id=21]
-flags = 7
-atlas = ExtResource( 5 )
-region = Rect2( 128, 0, 128, 128 )
-
-[sub_resource type="AtlasTexture" id=22]
-flags = 7
-atlas = ExtResource( 5 )
-region = Rect2( 0, 0, 128, 128 )
-
-[sub_resource type="SpriteFrames" id=23]
-animations = [ {
-"frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ) ],
-"loop": true,
-"name": "default",
-"speed": 30.0
-} ]
-
 [node name="Ghost" type="Spatial"]
 script = ExtResource( 1 )
 
@@ -132,6 +49,7 @@ collide_with_areas = true
 collide_with_bodies = false
 
 [node name="Area" type="Area" parent="."]
+monitoring = false
 collision_layer = 8
 collision_mask = 0
 
@@ -143,7 +61,6 @@ shape = SubResource( 1 )
 [node name="Particles" type="CPUParticles" parent="."]
 material_override = SubResource( 2 )
 cast_shadow = 0
-generate_lightmap = false
 emitting = false
 local_coords = false
 mesh = SubResource( 3 )
@@ -157,7 +74,6 @@ color_ramp = SubResource( 5 )
 visible = false
 material_override = SubResource( 2 )
 cast_shadow = 0
-generate_lightmap = false
 local_coords = false
 process_material = SubResource( 6 )
 draw_pass_1 = SubResource( 7 )
@@ -207,14 +123,6 @@ usage = 1
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Viewport"]
 modulate = Color( 5, 5, 5, 1 )
-<<<<<<< HEAD
-frames = SubResource( 23 )
-frame = 3
-=======
-frames = SubResource( 22 )
-frame = 12
->>>>>>> 64026b27e9d74ce0983c294b40b84a14aaf1a992
-playing = true
+frames = ExtResource( 5 )
 centered = false
-
 [connection signal="tween_completed" from="Tween" to="." method="_tween_completed"]
