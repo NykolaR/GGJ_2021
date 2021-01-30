@@ -113,7 +113,7 @@ mesh = SubResource( 2 )
 material/0 = SubResource( 3 )
 
 [node name="StaticBody13" type="StaticBody" parent="."]
-transform = Transform( 7.44507e-16, 9.13953e-09, -0.209088, 0.2288, -7.45525e-08, -6.97684e-21, -2.15055e-08, -0.264, -1.15398e-08, -2.14906, 2.18796, -4.43459e-05 )
+transform = Transform( 7.44507e-16, 9.13953e-09, -0.209088, 0.20592, -6.70973e-08, -6.27916e-21, -2.15055e-08, -0.264, -1.15398e-08, -2.14906, 2.18796, -4.43459e-05 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -123,6 +123,21 @@ transform = Transform( 1, 1.42109e-14, 0, -1.42109e-14, 1, 0, 0, 0, 1, -0.000808
 shape = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="StaticBody13"]
+transform = Transform( 1, 2.84217e-14, 0, -2.84217e-14, 1, 0, 0, 0, 1, 0, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = SubResource( 3 )
+
+[node name="StaticBody15" type="StaticBody" parent="."]
+transform = Transform( 2.15055e-08, 0.264, 2.06793e-08, 0.20592, -6.70973e-08, -6.27916e-21, 3.53754e-15, 4.34266e-08, -0.439085, -0.27795, 2.18796, -2.00004 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody15"]
+transform = Transform( 1, 1.42109e-14, 0, -1.42109e-14, 1, 0, 0, 0, 1, -0.000808716, 0.130036, 0.0271225 )
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="StaticBody15"]
 transform = Transform( 1, 2.84217e-14, 0, -2.84217e-14, 1, 0, 0, 0, 1, 0, 0, 0 )
 mesh = SubResource( 2 )
 material/0 = SubResource( 3 )
@@ -186,3 +201,23 @@ shape = SubResource( 1 )
 transform = Transform( 1, 2.84217e-14, 0, -2.84217e-14, 1, 0, 0, 0, 1, -10, 9.53674e-07, 0 )
 mesh = SubResource( 2 )
 material/0 = SubResource( 3 )
+
+[node name="OmniLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.66681, 3.06907 )
+light_energy = 3.8
+light_indirect_energy = 2.47
+
+[node name="OmniLight2" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.66681, -3.33229 )
+light_energy = 3.8
+light_indirect_energy = 2.47
+
+[node name="OmniLight3" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.46939, 2.80739, -2.48087 )
+light_energy = 3.8
+light_indirect_energy = 2.47
+
+[node name="OmniLight4" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.45034, 2.80739, 4.45847 )
+light_energy = 3.8
+light_indirect_energy = 2.47
