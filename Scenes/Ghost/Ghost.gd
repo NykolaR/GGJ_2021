@@ -36,6 +36,7 @@ func _ready() -> void:
 	else:
 		# current scene tree is controlling this ghost
 		fling.visible = true
+		reticle.visible = true
 		$Viewport/AnimatedSprite.playing = false
 		$Viewport.render_target_update_mode = Viewport.UPDATE_DISABLED
 		particles.visible = false

@@ -3,6 +3,8 @@ extends KinematicBody
 var height : float = 1.8
 var walk_speed : float = 3.0
 
+onready var environment : WorldEnvironment = $WorldEnvironment
+
 onready var raycast : RayCast = $RayCast
 onready var ghostcast : RayCast = $Cam_y/Cam_x/Camera/GhostCast
 
