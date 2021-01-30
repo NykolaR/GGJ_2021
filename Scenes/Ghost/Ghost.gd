@@ -1,5 +1,7 @@
 extends Spatial
 
+var caught : float = 0.0 setget set_caught
+
 onready var raycast : RayCast = $Cam_y/Cam_x/Camera/RayCast
 onready var tween : Tween = $Tween
 
@@ -43,13 +45,14 @@ func _ready() -> void:
 		$Cam_y/Cam_x/Camera.current = true
 
 func _physics_process(delta: float) -> void:
+	caught -= delta
 	if not tween.is_active():
 		if raycast.is_colliding():
 			reticle.modulate.a = 1
 			reticle.rect_scale = HIT_SCALE
 			# only collides with possessables
 			var col : Possessable = raycast.get_collider().get_parent() as Possessable # gross but is fine
-
+			
 			if col:
 				if Input.is_action_just_pressed("possess"):
 					# start fling bar movement
@@ -99,3 +102,8 @@ func _tween_completed(object : Object, key : NodePath) -> void:
 	if str(key) == ":translation":
 		_tween_all_completed()
 		tween.stop_all()
+
+func set_caught(new : float) -> void:
+	caught = new
+	if caught >= 3.0:
+		print("ded")

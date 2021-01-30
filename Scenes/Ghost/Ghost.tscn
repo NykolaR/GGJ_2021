@@ -7,6 +7,7 @@
 [ext_resource path="res://Scenes/Ghost/smoke.tres" type="SpriteFrames" id=5]
 
 [sub_resource type="SphereShape" id=1]
+radius = 1.5
 
 [sub_resource type="SpatialMaterial" id=2]
 resource_local_to_scene = true
@@ -126,4 +127,5 @@ usage = 1
 modulate = Color( 5, 5, 5, 1 )
 frames = ExtResource( 5 )
 centered = false
+
 [connection signal="tween_completed" from="Tween" to="." method="_tween_completed"]

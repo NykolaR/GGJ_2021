@@ -21,7 +21,7 @@ func _ready() -> void:
 		set_physics_process(false)
 	else:
 		# current scene tree is in control
-		pass
+		mesh.visible = false
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
