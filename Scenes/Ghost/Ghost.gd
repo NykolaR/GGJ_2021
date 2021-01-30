@@ -13,6 +13,10 @@ const transfer_time : float = 3.0
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	if not is_network_master():
+		set_physics_process(false)
+		set_process_input(false)
+	# If player is controlling the ghost, make it's particle trail invisible (?)
 
 func _physics_process(delta: float) -> void:
 	if not tween.is_active():
@@ -32,8 +36,8 @@ func _physics_process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		camera_control(event.relative)
-		if possessed:
-			pass
+		if possessed and not tween.is_active():
+			possessed.magnitude = clamp(event.relative.length_squared() / 1000, 0, 0.2)
 
 # camera movement of the fps object
 func camera_control(vector : Vector2) -> void:
@@ -43,4 +47,3 @@ func camera_control(vector : Vector2) -> void:
 func _tween_all_completed() -> void:
 	if possessed:
 		particles.emitting = false
-		possessed.magnitude = 0.1

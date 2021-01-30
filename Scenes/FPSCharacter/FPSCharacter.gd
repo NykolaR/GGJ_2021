@@ -5,8 +5,13 @@ onready var raycast : RayCast = $RayCast
 onready var cam_y : Spatial = $Cam_y
 onready var cam_x : Spatial = $Cam_y/Cam_x
 
+onready var mesh : MeshInstance = $MeshInstance
+
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	if not is_network_master():
+		set_process_input(false)
+		set_physics_process(false)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -14,6 +19,8 @@ func _input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	movement(delta)
+
+	rpc_unreliable("set_transform", mesh.global_transform)
 
 # movement of the fps object
 func movement(delta : float) -> void:
@@ -31,3 +38,6 @@ func movement(delta : float) -> void:
 func camera_control(vector : Vector2) -> void:
 	cam_y.rotate_y(-vector.x * 0.15 * get_physics_process_delta_time())
 	cam_x.rotation.x = clamp(cam_x.rotation.x + (-vector.y * 0.15 * get_physics_process_delta_time()), -1.3, 1.3)
+
+remote func set_transform(new : Transform) -> void:
+	mesh.global_transform = new

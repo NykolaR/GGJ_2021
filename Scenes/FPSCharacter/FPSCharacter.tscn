@@ -25,6 +25,5 @@ shape = SubResource( 1 )
 enabled = true
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
-visible = false
 mesh = SubResource( 2 )
 material/0 = null

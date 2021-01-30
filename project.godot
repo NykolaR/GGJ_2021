@@ -21,11 +21,13 @@ _global_script_class_icons={
 [application]
 
 config/name="GGJ_2021"
+run/main_scene="res://Scenes/Management/Boot.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 Time="*res://Autoload/Time.gd"
+NetHelper="*res://Autoload/NetHelper.gd"
 
 [input]
 
@@ -66,4 +68,5 @@ possess={
 
 [rendering]
 
+quality/driver/driver_name="GLES2"
 environment/default_environment="res://default_env.tres"
