@@ -29,6 +29,7 @@ config/icon="res://icon.png"
 Time="*res://Autoload/Time.gd"
 NetHelper="*res://Autoload/NetHelper.gd"
 Settings="*res://Autoload/Settings.gd"
+gamestate="*res://Scenes/Network/gamestate.gd"
 
 [display]
 
@@ -75,4 +76,3 @@ possess={
 [rendering]
 
 quality/driver/driver_name="GLES2"
-environment/default_environment="res://default_env.tres"
