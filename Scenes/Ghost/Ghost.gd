@@ -39,6 +39,7 @@ func _ready() -> void:
 		$Viewport/AnimatedSprite.playing = false
 		$Viewport.render_target_update_mode = Viewport.UPDATE_DISABLED
 		particles.visible = false
+		$Cam_y/Cam_x/Camera.current = true
 
 func _physics_process(delta: float) -> void:
 	if not tween.is_active():
