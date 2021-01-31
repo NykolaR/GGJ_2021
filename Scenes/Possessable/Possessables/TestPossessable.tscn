@@ -7,6 +7,9 @@ extents = Vector3( 0.253869, 0.256341, 0.249409 )
 
 [sub_resource type="CubeMesh" id=2]
 size = Vector3( 0.5, 0.5, 0.5 )
+subdivide_width = 3
+subdivide_height = 3
+subdivide_depth = 3
 
 [sub_resource type="BoxShape" id=3]
 extents = Vector3( 0.250376, 0.250565, 0.243704 )
