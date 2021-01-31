@@ -6,7 +6,7 @@ extends Node
 const DEFAULT_PORT = 10567
 
 # Max number of players.
-const MAX_PEERS = 2
+const MAX_PEERS = 3
 
 var peer = null
 
@@ -90,7 +90,12 @@ remote func pre_start_game(spawn_points):
 			player = player_scene.instance()
 		else:
 			print("ghost")
+			var possessives = get_tree().get_nodes_in_group("Possessive")
+			var possessiveLength = possessives.size()
+			var possessiveIndex = randi()%possessiveLength
+			var possessive = possessives[possessiveIndex]
 			player = ghost_scene.instance()
+			player.translation = possessive.translation + possessive.center.translation
 		
 		#var spawn_pos = world.get_node("SpawnPoints/" + str(spawn_points[p_id])).position
 

@@ -2,36 +2,36 @@
 
 [ext_resource path="res://Scenes/Possessable/Possessable.gd" type="Script" id=1]
 
-[sub_resource type="VisualShaderNodeInput" id=8]
+[sub_resource type="VisualShaderNodeInput" id=1]
 input_name = "color"
 
-[sub_resource type="VisualShaderNodeVec3Uniform" id=3]
+[sub_resource type="VisualShaderNodeVec3Uniform" id=2]
 uniform_name = "PosessPosition"
 
-[sub_resource type="VisualShaderNodeVectorDistance" id=4]
+[sub_resource type="VisualShaderNodeVectorDistance" id=3]
 
-[sub_resource type="VisualShaderNodeInput" id=5]
+[sub_resource type="VisualShaderNodeInput" id=4]
 input_name = "vertex"
 
-[sub_resource type="OpenSimplexNoise" id=9]
+[sub_resource type="OpenSimplexNoise" id=5]
 seed = 4894654
 period = 32.0
 
-[sub_resource type="NoiseTexture" id=10]
+[sub_resource type="NoiseTexture" id=6]
 seamless = true
 as_normalmap = true
-noise = SubResource( 9 )
+noise = SubResource( 5 )
 
-[sub_resource type="VisualShaderNodeTexture" id=11]
-texture = SubResource( 10 )
+[sub_resource type="VisualShaderNodeTexture" id=7]
+texture = SubResource( 6 )
 
-[sub_resource type="VisualShaderNodeInput" id=12]
+[sub_resource type="VisualShaderNodeInput" id=8]
 input_name = "time"
 
-[sub_resource type="VisualShaderNodeVectorOp" id=13]
+[sub_resource type="VisualShaderNodeVectorOp" id=9]
 operator = 2
 
-[sub_resource type="VisualShader" id=6]
+[sub_resource type="VisualShader" id=10]
 code = "shader_type spatial;
 render_mode specular_schlick_ggx;
 
@@ -82,29 +82,28 @@ void light() {
 }
 "
 graph_offset = Vector2( -415, -39 )
-nodes/vertex/2/node = SubResource( 3 )
+nodes/vertex/2/node = SubResource( 2 )
 nodes/vertex/2/position = Vector2( -320, 140 )
-nodes/vertex/3/node = SubResource( 4 )
+nodes/vertex/3/node = SubResource( 3 )
 nodes/vertex/3/position = Vector2( -60, 140 )
-nodes/vertex/4/node = SubResource( 5 )
+nodes/vertex/4/node = SubResource( 4 )
 nodes/vertex/4/position = Vector2( -320, 220 )
-nodes/vertex/5/node = SubResource( 11 )
+nodes/vertex/5/node = SubResource( 7 )
 nodes/vertex/5/position = Vector2( -100, 240 )
-nodes/vertex/6/node = SubResource( 12 )
+nodes/vertex/6/node = SubResource( 8 )
 nodes/vertex/6/position = Vector2( -320, 300 )
-nodes/vertex/7/node = SubResource( 13 )
+nodes/vertex/7/node = SubResource( 9 )
 nodes/vertex/7/position = Vector2( 120, 260 )
 nodes/vertex/connections = PoolIntArray( 4, 0, 3, 1, 2, 0, 3, 0, 3, 0, 0, 6, 6, 0, 5, 0, 5, 0, 7, 1, 3, 0, 7, 0, 7, 0, 0, 0 )
-nodes/fragment/2/node = SubResource( 8 )
+nodes/fragment/2/node = SubResource( 1 )
 nodes/fragment/2/position = Vector2( -160, 160 )
 nodes/fragment/connections = PoolIntArray( 2, 0, 0, 0 )
 
-[sub_resource type="ShaderMaterial" id=7]
-shader = SubResource( 6 )
+[sub_resource type="ShaderMaterial" id=11]
+shader = SubResource( 10 )
 shader_param/PosessPosition = Vector3( 0.133, 0.038, 0 )
 
-[sub_resource type="Animation" id=1]
-resource_name = "big_wiggle"
+[sub_resource type="Animation" id=12]
 tracks/0/type = "value"
 tracks/0/path = NodePath("MeshInstance:translation")
 tracks/0/interp = 1
@@ -130,8 +129,7 @@ tracks/1/keys = {
 "values": [ Vector3( 0, 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "little_wiggle"
+[sub_resource type="Animation" id=13]
 
 [node name="Possessable" type="StaticBody" groups=[
 "Possessive",
@@ -144,11 +142,11 @@ script = ExtResource( 1 )
 [node name="CollisionShape" type="CollisionShape" parent="."]
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
-material_override = SubResource( 7 )
+material_override = SubResource( 11 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/big_wiggle = SubResource( 1 )
-anims/little_wiggle = SubResource( 2 )
+anims/big_wiggle = SubResource( 12 )
+anims/little_wiggle = SubResource( 13 )
 
 [node name="GhostCol" type="Area" parent="."]
 monitoring = false
