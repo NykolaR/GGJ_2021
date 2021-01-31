@@ -44,7 +44,7 @@ func _physics_process(delta: float) -> void:
 		global_transform.origin.y = ray_col.y + height
 	
 	if get_tree().network_peer:
-		rpc_unreliable("set_transform", mesh.global_transform)
+		rpc_unreliable("set_transform_new", global_transform, $Cam_y/Cam_x/Camera/SpotLight.global_transform)
 	
 	if ghostcast.is_colliding():
 		var ghost : Ghost = ghostcast.get_collider().get_parent() # ew
@@ -68,5 +68,6 @@ func camera_control(vector : Vector2) -> void:
 	cam_y.rotate_y(-vector.x * 0.01 * Settings.mouse_sens)# * get_physics_process_delta_time())
 	cam_x.rotation.x = clamp(cam_x.rotation.x + (-vector.y * 0.01 * Settings.mouse_sens), -1.3, 1.3)
 
-remote func set_transform(new : Transform) -> void:
-	mesh.global_transform = new
+remote func set_transform_new(new : Transform, flash : Transform) -> void:
+	global_transform = new
+	$Cam_y/Cam_x/Camera/SpotLight.global_transform = flash
